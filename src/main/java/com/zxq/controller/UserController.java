@@ -2,6 +2,7 @@ package com.zxq.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
@@ -44,4 +45,45 @@ public class UserController {
     public  String types(){
         return "types";
     }
+
+    @PostMapping("/admin/index")
+    public  String adminIndex(){
+        return "admin/index";
+    }
+
+    @GetMapping("/admin/login")
+    public  String adminLogin(){
+        return "admin/login";
+    }
+
+    @GetMapping("/admin/blogs")
+    public  String adminBlogs(){
+        return "admin/blogs";
+    }
+
+    @GetMapping("/admin/blogs/input")
+    public  String adminBlogsInput(){
+        return "admin/blogs-input";
+    }
+
+    @GetMapping("/admin/tags")
+    public  String adminTags(){
+        return "admin/tags";
+    }
+
+    @GetMapping("/admin/tags/input")
+    public  String adminTagsInput(){
+        return "admin/tags-input";
+    }
+
+    @GetMapping("/admin/types")
+    public  String adminTypes(){
+        return "admin/types";
+    }
+
+    @GetMapping("/admin/types/input")
+    public  String adminTypesInput(){
+        return "admin/types-input";
+    }
+
 }

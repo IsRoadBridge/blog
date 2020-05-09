@@ -1,6 +1,6 @@
 
 body {
-    background: url("../images/bg.png");
+    background: url("/semantic/images/bg.png");
 }
 
 .m-padded-mini {
@@ -150,6 +150,9 @@ body {
     color: #00B5AD !important;
 }
 
+.m-white {
+    color:#7B7B7B !important;
+}
 
 
 .m-mobile-show {
