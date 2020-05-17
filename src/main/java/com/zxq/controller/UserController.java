@@ -1,5 +1,6 @@
 package com.zxq.controller;
 
+import com.zxq.exception.NotFindException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,11 @@ public class UserController {
 
     @GetMapping("/index")
     public  String index(){
+        /*String ss= null;
+        if(ss==null){
+            throw new  NotFindException("博客不存在");
+        }*/
+        int i=9/0;
         return "index";
     }
 
