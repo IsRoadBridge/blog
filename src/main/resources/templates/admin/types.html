@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类管理</title>
-  <link rel="stylesheet" th:href="@{/semantic/semantic.min.css}">
-  <link rel="stylesheet" th:href="@{/semantic/css/me.css}">
 </head>
 <body>
 
@@ -54,7 +52,7 @@
                 <a  class="  item" >上一页</a>
                 <a  class=" item" >下一页</a>
               </div>
-              <a   class="ui mini right floated teal basic button">新增</a>
+              <a  th:href="@{/admin/types/input}"  class="ui mini right floated teal basic button">新增</a>
             </th>
           </tr>
         </tfoot>
@@ -67,10 +65,8 @@
   <!--底部footer-->
   <footer th:replace="admin/_fragments :: footer" >
   </footer>
-  <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-  <!--/*/</th:block>/*/-->
   <script>
     $('.menu.toggle').click(function () {
       $('.m-item').toggleClass('m-mobile-hide');

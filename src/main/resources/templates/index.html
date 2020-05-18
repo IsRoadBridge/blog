@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>博客</title>
-  <link rel="stylesheet" th:href="/semantic/semantic.min.css" >
-  <link rel="stylesheet" th:href="/semantic/css/me.css" >
 </head>
 <body>
 
@@ -523,7 +521,7 @@
           <!--二维码-->
           <h4 class="ui horizontal divider header m-margin-top-large">扫码关注我</h4>
           <div class="ui centered card" style="width: 11em">
-            <img src="../static/images/wechat.jpg"  alt="" class="ui rounded image" >
+            <img th:src="@{semantic/images/wechat.jpg}"  alt="" class="ui rounded image" >
           </div>
         </div>
 
@@ -540,7 +538,7 @@
   </footer>
 <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-  <script th:src="/semantic/semantic.min.js"></script>
+  <script th:src="@{/semantic/semantic.min.js}"></script>
 <!--/*/</th:block>/*/-->
 
   <script>

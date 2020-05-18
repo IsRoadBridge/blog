@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>标签</title>
-  <link rel="stylesheet" th:href="@{/semantic/semantic.min.css}">
-  <link rel="stylesheet" th:href="@{/semantic/css/me.css}">
 </head>
 <body>
 
@@ -29,7 +27,7 @@
       </div>
 
       <div class="ui attached segment m-padded-tb-large">
-        <a href="#"   class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
+        <a href="#"   class="ui basic left pointing large label m-margin-tb-tiny"  >
           <span >方法论</span> <div class="detail" >23</div>
         </a>
       </div>
@@ -99,10 +97,8 @@
   <!--底部footer-->
   <footer th:replace="_fragments :: footer" >
   </footer>
-  <!--/*/<th:block th:replace="_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script th:src="@{/semantic]semantic.min.js}"></script>
-  <!--/*/</th:block>/*/-->
 
   <script>
     $('.menu.toggle').click(function () {

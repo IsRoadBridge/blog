@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>标签新增</title>
-  <link rel="stylesheet" th:href="@{/semantic/semantic.min.css">
-  <link rel="stylesheet" th:href="@{/semantic/css/me.css}">
+
 </head>
 <body>
 
@@ -34,13 +33,13 @@
         </div>
 
         <div class="ui error message"></div>
-        <!--/*/
+        <!--
         <div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
           <i class="close icon"></i>
           <div class="header">验证失败</div>
           <p th:errors="*{name}">提交信息不符合规则</p>
         </div>
-         /*/-->
+        -->
         <div class="ui right aligned container">
           <button type="button" class="ui button" onclick="window.history.go(-1)" >返回</button>
           <button class="ui teal submit button">提交</button>
@@ -62,10 +61,8 @@
   <footer th:replace="admin/_fragments :: footer">
   </footer>
 
-  <!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-  <!--/*/</th:block>/*/-->
 
   <script>
 
