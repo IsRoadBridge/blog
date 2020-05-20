@@ -11,6 +11,10 @@
         select  * from t_tag where id=#{id};
     </select>
 
+    <select id="findByName"  resultType="Tag">
+        select  * from t_tag where name=#{name};
+    </select>
+
     <insert id="save" parameterType="java.lang.String">
         insert into t_tag(name) values(#{name});
     </insert>

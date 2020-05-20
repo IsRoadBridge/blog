@@ -27,6 +27,12 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public Tag findByName(String name) {
+        Tag tag = tagMapper.findByName(name);
+        return tag;
+    }
+
+    @Override
     public int save(String name) {
         int i = tagMapper.save(name);
         return i;

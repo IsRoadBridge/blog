@@ -9,6 +9,8 @@ public interface TagService {
 
     Tag findById(Long id);
 
+    Tag findByName(String name);
+
     int save(String name);
 
     int delete(Long id);

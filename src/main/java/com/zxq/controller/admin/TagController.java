@@ -34,7 +34,12 @@ public class TagController {
     }
 
     @PostMapping("/input")
-    public  String tagInputDo( String name, RedirectAttributes attributes){
+    public  String tagInputDo( String name, RedirectAttributes attributes,Model model){
+        Tag tag = tagService.findByName(name);
+        if(tag != null){
+            model.addAttribute("message","该标签已存在，请勿重复添加");
+            return  "admin/tags-input";
+        }
         int i =tagService.save(name);
         if(i>0){
             attributes.addFlashAttribute("message","新增成功");

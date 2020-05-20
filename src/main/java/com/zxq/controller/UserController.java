@@ -63,15 +63,9 @@ public class UserController {
         return "admin/blogs-input";
     }
 
-    @GetMapping("/admin/tags")
-    public  String adminTags(){
-        return "admin/tags";
-    }
 
-    @GetMapping("/admin/tags/input")
-    public  String adminTagsInput(){
-        return "admin/tags-input";
-    }
+
+
 
     @GetMapping("/admin/types")
     public  String adminTypes(){
