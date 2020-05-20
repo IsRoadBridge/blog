@@ -67,14 +67,6 @@ public class UserController {
 
 
 
-    @GetMapping("/admin/types")
-    public  String adminTypes(){
-        return "admin/types";
-    }
 
-    @GetMapping("/admin/types/input")
-    public  String adminTypesInput(){
-        return "admin/types-input";
-    }
 
 }

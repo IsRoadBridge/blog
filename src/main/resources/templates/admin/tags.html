@@ -25,7 +25,7 @@
       <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
         <i class="close icon"></i>
         <div class="header">提示：</div>
-        <p  th:text="${message}">恭喜，操作成功！</p>
+        <p  th:text="${message}"></p>
       </div>
       <table class="ui compact celled teal table">
         <thead>
@@ -36,12 +36,12 @@
           </tr>
         </thead>
         <tbody >
-          <tr th:each="tag:${tags}">
-            <td th:text="${tag.getId()}">1</td>
-            <td th:text="${tag.getName()}">刻意练习清单</td>
+          <tr th:each="tag,iterStat:${tags}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${tag.name}"></td>
             <td>
-              <a th:href="@{tags/update/{id}(id=${tag.getId()})}" class="ui mini teal basic button">编辑</a>
-              <a th:href="@{tags/delete/{id}(id=${tag.getId()})}"  class="ui mini red basic button">删除</a>
+              <a th:href="@{/admin/tags/update/{id}(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
+              <a th:href="@{/admin/tags/delete/{id}(id=${tag.id})}"  class="ui mini red basic button">删除</a>
             </td>
           </tr>
         </tbody>
@@ -52,7 +52,7 @@
                 <a  class="  item" >上一页</a>
                 <a  class=" item" >下一页</a>
               </div>
-              <a href="#" th:href="@{/admin/tags/input}"  class="ui mini right floated teal basic button">新增</a>
+              <a  th:href="@{/admin/tags/input}"  class="ui mini right floated teal basic button">新增</a>
             </th>
           </tr>
         </tfoot>

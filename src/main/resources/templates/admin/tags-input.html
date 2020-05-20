@@ -27,11 +27,10 @@
         <div class=" field">
           <div class="ui left labeled input">
             <label class="ui teal basic label">名称</label>
-            <input type="text" name="name" placeholder="分类名称" >
+            <input type="text" name="name" placeholder="标签名称" >
           </div>
         </div>
 
-<!--        <div class="ui error mini message"></div>-->
         <div class="ui mini negative message" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></div>
 
         <div class="ui right aligned container">
