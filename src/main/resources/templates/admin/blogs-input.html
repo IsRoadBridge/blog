@@ -22,7 +22,7 @@
 <!--中间内容-->
 <div  class="m-container m-padded-tb-big">
   <div class="ui container">
-    <form id="blog-form"  th:action="@{/admin/blogs}" method="post" class="ui form">
+    <form id="blog-form"  th:action="@{/admin/blogs/input}" method="post" class="ui form">
       <input type="hidden" name="published" >
       <input type="hidden" name="id">
       <div class="required field">
@@ -65,7 +65,7 @@
           <div class="ui left labeled action input">
             <label class="ui compact teal basic label">标签</label>
             <div class="ui fluid selection multiple search  dropdown">
-              <input type="hidden" name="tagIds"  >
+              <input type="hidden" name="tag.id"  >
               <i class="dropdown icon"></i>
               <div class="default text">标签</div>
               <div class="menu">

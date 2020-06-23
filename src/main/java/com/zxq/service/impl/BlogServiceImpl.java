@@ -30,8 +30,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public int updateBlog(Long id) {
-        return blogMapper.updateBlog(id);
+    public int updateBlog(Blog blog) {
+        return blogMapper.updateBlog(blog);
     }
 
     @Override

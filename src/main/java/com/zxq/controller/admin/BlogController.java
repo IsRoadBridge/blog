@@ -16,6 +16,11 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
+    @GetMapping("/blogs")
+    public  String  blog(){
+        return "admin/blogs";
+    }
+
     @GetMapping("/blogs/input")
     public  String  saveBlog(){
         return "admin/blogs-input";

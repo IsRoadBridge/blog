@@ -12,7 +12,7 @@ public interface BlogService {
 
     int saveBlog(Blog blog);
 
-    int updateBlog(Long id);
+    int updateBlog(Blog blog);
 
     int deleteBlog(Long id);
 }

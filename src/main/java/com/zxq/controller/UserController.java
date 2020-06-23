@@ -53,15 +53,7 @@ public class UserController {
 
 
 
-    @GetMapping("/admin/blogs")
-    public  String adminBlogs(){
-        return "admin/blogs";
-    }
 
-    @GetMapping("/admin/blogs/input")
-    public  String adminBlogsInput(){
-        return "admin/blogs-input";
-    }
 
 
 
