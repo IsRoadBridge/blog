@@ -6,6 +6,7 @@ import com.zxq.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public int saveBlog(Blog blog) {
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        blog.setViews(0);
         return blogMapper.saveBlog(blog);
     }
 

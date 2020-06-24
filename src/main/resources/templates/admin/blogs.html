@@ -71,13 +71,13 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td >1</td>
-            <td >刻意练习清单</td>
+          <tr th:each="blog,iterStat : ${blogs}">
+            <td th:text="${iterStat.count}">1</td>
+            <td th:text="${blog.title}">刻意练习清单</td>
             <td >认知升级</td>
-            <td >是</td>
-            <td >草稿</td>
-            <td >2017-10-02 09:45</td>
+            <td th:text="${blog.recommend} ? '是':'否'">是</td>
+            <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
+            <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
             <td>
               <a href="#"  class="ui mini teal basic button">编辑</a>
               <a href="#"  class="ui mini red basic button">删除</a>

@@ -28,6 +28,7 @@ public class Blog {
     private List<Tag> tags;
     private  User user;
     private  List<Comment> comments;
+    private  String tagIds;
 
     public Blog() {
     }
@@ -168,6 +169,14 @@ public class Blog {
         this.comments = comments;
     }
 
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -188,6 +197,7 @@ public class Blog {
                 ", tags=" + tags +
                 ", user=" + user +
                 ", comments=" + comments +
+                ", tagIds='" + tagIds + '\'' +
                 '}';
     }
 }

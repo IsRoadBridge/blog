@@ -13,8 +13,8 @@
 <div class="ui attached pointing menu">
   <div class="ui container">
     <div class="right menu">
-      <a href="#" th:href="@{/admin/blogs/input}" class="teal active item">发布</a>
-      <a href="#" th:href="@{/admin/blogs}" class="item">列表</a>
+      <a  th:href="@{/admin/blogs/input}" class="teal active item">发布</a>
+      <a  th:href="@{/admin/blogs}" class="item">列表</a>
     </div>
   </div>
 </div>
@@ -23,12 +23,12 @@
 <div  class="m-container m-padded-tb-big">
   <div class="ui container">
     <form id="blog-form"  th:action="@{/admin/blogs/input}" method="post" class="ui form">
-      <input type="hidden" name="published" >
+      <input type="hidden" name="published" th:value="*{published}" >
       <input type="hidden" name="id">
       <div class="required field">
         <div class="ui left labeled input">
           <div class="ui selection compact teal basic dropdown label">
-            <input type="hidden" value="原创" name="flag" >
+            <input type="hidden" th:value="*{flag}" name="flag" >
             <i class="dropdown icon"></i>
             <div class="text">原创</div>
             <div class="menu">
@@ -56,7 +56,7 @@
               <i class="dropdown icon"></i>
               <div class="default text">分类</div>
               <div class="menu">
-                <div  class="item" data-value="1"  >错误日志</div>
+                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}"></div>
               </div>
             </div>
           </div>
@@ -65,11 +65,11 @@
           <div class="ui left labeled action input">
             <label class="ui compact teal basic label">标签</label>
             <div class="ui fluid selection multiple search  dropdown">
-              <input type="hidden" name="tag.id"  >
+              <input type="hidden" name="tagIds"  >
               <i class="dropdown icon"></i>
               <div class="default text">标签</div>
               <div class="menu">
-                <div  class="item" data-value="1" >java</div>
+                <div th:each="tag : ${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}"></div>
               </div>
             </div>
           </div>
@@ -96,8 +96,8 @@
         </div>
         <div class="field">
           <div class="ui checkbox">
-            <input type="checkbox" id="shareStatement" name="shareStatement" th:checked="*{shareStatement}" class="hidden">
-            <label for="shareStatement">转载声明</label>
+            <input type="checkbox" id="copyright" name="copyright" th:checked="*{copyright}" class="hidden">
+            <label for="copyright">转载声明</label>
           </div>
         </div>
         <div class="field">

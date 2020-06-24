@@ -13,17 +13,17 @@
 
     <insert id="saveBlog" parameterType="Blog">
         insert  into t_blog(id,title,content,first_picture,flag,views,appreciation,copyright,
-                        commentabled,published,recommend,create_time,update_time,type_id,user_id)
+                        commentabled,published,recommend,create_time,update_time,type_id,user_id,tag_id)
               values(#{id},#{title},#{content},#{firstPicture},#{flag},#{views},#{appreciation},
               #{copyright},#{commentabled},#{published},#{recommend},#{createTime},#{updateTime},
-              #{type.id},#{user.id})
+              #{type.id},#{user.id},#{tagIds})
     </insert>
 
     <update id="updateBlog" parameterType="Blog">
        update  t_blog set title=#{title},content=#{content},first_picture=#{firstPicture},
        flag=#{flag},views=#{views},appreciation=#{appreciation},copyright=#{copyright},
        commentabled=#{commentabled},published=#{published},recommend=#{recommend},create_time=#{createTime},
-       update_time=#{updateTime},type_id=#{type.id},user_id=#{user.id} where id=#{id}
+       update_time=#{updateTime},type_id=#{type.id},user_id=#{user.id},tag_id=#{tagIds} where id=#{id}
     </update>
 
     <delete id="deleteBlog" parameterType="java.lang.Long">
