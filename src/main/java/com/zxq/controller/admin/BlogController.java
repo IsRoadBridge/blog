@@ -6,7 +6,6 @@ import com.zxq.pojo.User;
 import com.zxq.service.BlogService;
 import com.zxq.service.TagService;
 import com.zxq.service.TypeService;
-import com.zxq.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +31,9 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
-    @Autowired
-    private UserService userService;
-
     @GetMapping("/blogs")
     public String blog(Model model) {
         List<Blog> blogList = blogService.findBlogAll();
-        System.out.println(blogList);
         model.addAttribute("blogs", blogList);
         return "admin/blogs";
     }
@@ -51,11 +46,10 @@ public class BlogController {
     }
 
     @PostMapping("/blogs/input")
-    public String saveBlogDo(Blog blog, RedirectAttributes attributes, HttpSession session) {
+    public String saveBlogDo(Blog blog, RedirectAttributes attributes, HttpSession session)  {
         blog.setType(typeService.findById(blog.getType().getId()));
         blog.setUser((User) session.getAttribute("user"));
-        System.out.println(blog.getUser());
-        int i = blogService.saveBlog(blog);
+        int i =blogService.saveBlog(blog);
         if (i > 0) {
             attributes.addFlashAttribute("message", "新增成功");
         } else {
