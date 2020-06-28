@@ -2,12 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zxq.dao.BlogMapper">
+   <resultMap id="BlogResultMapper" type="com.zxq.pojo.Blog">
+    <id column="id" property="id"></id>
+    <result column="title" property="title"></result>
+    <result column="content" property="content"></result>
+    <result column="first_picture" property="firstPicture"></result>
+    <result column="flag" property="flag"></result>
+    <result column="views" property="views"></result>
+    <result column="appreciation" property="appreciation"></result>
+    <result column="copyright" property="copyright"></result>
+    <result column="commentabled" property="commentabled"></result>
+    <result column="published" property="published"></result>
+    <result column="recommend" property="recommend"></result>
+    <result column="create_time" property="createTime"></result>
+    <result column="update_time" property="updateTime"></result>
+    <result column="tag_id" property="tagIds"></result>
+    <association property="user" javaType="com.zxq.pojo.User">
+           <id column="user_id" property="id"></id>
+    </association>
+    <association property="type" javaType="com.zxq.pojo.Type">
+           <id column="type_id" property="id"></id>
+    </association>
+   </resultMap>
 
-    <select id="findBlogAll" resultType="Blog">
+    <select id="findBlogAll" resultMap="BlogResultMapper">
         select  * from t_blog
     </select>
 
-    <select id="findById" resultType="Blog" parameterType="java.lang.Long">
+    <select id="findById"  parameterType="java.lang.Long" resultMap="BlogResultMapper">
         select  * from t_blog  where  id=#{id}
     </select>
 
@@ -21,9 +43,9 @@
 
     <update id="updateBlog" parameterType="Blog">
        update  t_blog set title=#{title},content=#{content},first_picture=#{firstPicture},
-       flag=#{flag},views=#{views},appreciation=#{appreciation},copyright=#{copyright},
-       commentabled=#{commentabled},published=#{published},recommend=#{recommend},create_time=#{createTime},
-       update_time=#{updateTime},type_id=#{type.id},user_id=#{user.id},tag_id=#{tagIds} where id=#{id}
+       flag=#{flag},appreciation=#{appreciation},copyright=#{copyright},
+       commentabled=#{commentabled},published=#{published},recommend=#{recommend},
+       update_time=#{updateTime},type_id=#{type.id},tag_id=#{tagIds} where id=#{id}
     </update>
 
     <delete id="deleteBlog" parameterType="java.lang.Long">

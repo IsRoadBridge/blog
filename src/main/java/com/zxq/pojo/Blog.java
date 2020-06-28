@@ -1,5 +1,6 @@
 package com.zxq.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,9 @@ public class Blog {
     private boolean published;
     //是否推荐
     private boolean recommend;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     private  Type type;
     private List<Tag> tags;

@@ -23,14 +23,14 @@
 <div  class="m-container m-padded-tb-big">
   <div class="ui container">
     <form id="blog-form"  th:action="@{/admin/blogs/input}" method="post" class="ui form">
-      <input type="hidden" name="published" th:value="*{published}" >
+      <input type="hidden" name="published"  >
       <input type="hidden" name="id">
       <div class="required field">
         <div class="ui left labeled input">
           <div class="ui selection compact teal basic dropdown label">
-            <input type="hidden" th:value="*{flag}" name="flag" >
+            <input type="hidden"  name="flag" >
             <i class="dropdown icon"></i>
-            <div class="text">原创</div>
+            <div class="text"></div>
             <div class="menu">
               <div class="item" data-value="原创">原创</div>
               <div class="item" data-value="转载">转载</div>

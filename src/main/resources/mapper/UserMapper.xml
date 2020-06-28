@@ -4,6 +4,7 @@
 <mapper namespace="com.zxq.dao.UserMapper">
 
     <select id="findUserByUsernameAndPassword" parameterType="java.lang.String" resultType="User">
-        select  username,password from t_user where  username=#{username} and password=#{password};
+        select  * from t_user where  username=#{username} and password=#{password};
     </select>
+
 </mapper>

@@ -17,4 +17,5 @@ public class UserServiceImpl implements UserService {
         User user =userMapper.findUserByUsernameAndPassword(username,password);
         return user;
     }
+
 }

@@ -14,8 +14,8 @@
   <div class="ui attached pointing menu">
     <div class="ui container">
       <div class="right menu">
-        <a href="#" th:href="@{/admin/blogs/input}" class=" item">发布</a>
-        <a href="#" th:href="@{/admin/blogs}" class="teal active item">列表</a>
+        <a  th:href="@{/admin/blogs/input}" class=" item">发布</a>
+        <a  th:href="@{/admin/blogs}" class="teal active item">列表</a>
       </div>
     </div>
   </div>
@@ -79,8 +79,8 @@
             <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
             <td th:text="${blog.updateTime}">2017-10-02 09:45</td>
             <td>
-              <a href="#"  class="ui mini teal basic button">编辑</a>
-              <a href="#"  class="ui mini red basic button">删除</a>
+              <a th:href="@{/admin/blogs/update/{id}(id=${blog.id})}"  class="ui mini teal basic button">编辑</a>
+              <a th:href="@{/admin/blogs/delete/{id}(id=${blog.id})}"  class="ui mini red basic button">删除</a>
             </td>
           </tr>
           </tbody>
@@ -97,16 +97,19 @@
           </tfoot>
         </table>
 
-        <div class="ui success message" >
-          <i class="close icon"></i>
-          <div class="header">提示：</div>
-          <p >恭喜，操作成功！</p>
-        </div>
+        <div class="ui container">
+          <div class="ui success message" th:unless="${#strings.isEmpty(message)}" >
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}"></p>
+          </div>
 
       </div>
 
     </div>
   </div>
+  </div>
+
 
   <br>
   <br>
