@@ -32,6 +32,7 @@ public class Blog {
     private  User user;
     private  List<Comment> comments;
     private  String tagIds;
+    private  String description;
 
     public Blog() {
     }
@@ -180,6 +181,14 @@ public class Blog {
         this.tagIds = tagIds;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -201,6 +210,7 @@ public class Blog {
                 ", user=" + user +
                 ", comments=" + comments +
                 ", tagIds='" + tagIds + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
