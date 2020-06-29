@@ -7,4 +7,7 @@
         select  * from t_user where  username=#{username} and password=#{password};
     </select>
 
+    <select id="findUserById" parameterType="java.lang.Long" resultType="User">
+        select  * from t_user where  id=#{id};
+    </select>
 </mapper>

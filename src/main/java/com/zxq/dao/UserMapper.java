@@ -10,4 +10,6 @@ public interface UserMapper {
 
     User findUserByUsernameAndPassword(String username,String password);
 
+    User findUserById(Long id);
+
 }

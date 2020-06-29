@@ -13,6 +13,8 @@ public interface TypeMapper {
 
     List<Type>  findAll();
 
+    List<Type>  findByTop();
+
     Type findById(Long id);
 
     Type findByName(String name);

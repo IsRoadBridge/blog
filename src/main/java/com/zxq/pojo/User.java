@@ -10,7 +10,7 @@ public class User {
     private  String password;
     private  String email;
     private  Integer type;
-    private boolean headPicture;
+    private String headPicture;
     private Date createTime;
     private Date updateTime;
     private List<Blog> blogs;
@@ -66,11 +66,11 @@ public class User {
         this.type = type;
     }
 
-    public boolean isHeadPicture() {
+    public String getHeadPicture() {
         return headPicture;
     }
 
-    public void setHeadPicture(boolean headPicture) {
+    public void setHeadPicture(String headPicture) {
         this.headPicture = headPicture;
     }
 

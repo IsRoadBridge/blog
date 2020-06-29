@@ -27,11 +27,15 @@
    </resultMap>
 
     <select id="findBlogAll" resultMap="BlogResultMapper">
-        select  * from t_blog
+        select  * from t_blog  order by update_time DESC
     </select>
 
     <select id="findById"  parameterType="java.lang.Long" resultMap="BlogResultMapper">
         select  * from t_blog  where  id=#{id}
+    </select>
+
+    <select id="findBlogTop" parameterType="java.lang.Integer" resultType="Blog">
+        select  * from t_blog  where recommend='1'  order by update_time DESC limit #{size}
     </select>
 
     <insert id="saveBlog" parameterType="Blog">

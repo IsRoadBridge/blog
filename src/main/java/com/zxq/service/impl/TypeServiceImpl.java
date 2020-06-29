@@ -21,6 +21,11 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    public List<Type> findByTop() {
+        return typeMapper.findByTop();
+    }
+
+    @Override
     public Type findById(Long id) {
         Type type = typeMapper.findById(id);
         return type;

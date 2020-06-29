@@ -11,6 +11,8 @@ public interface BlogService {
 
     Blog findById(Long id);
 
+    List<Blog>  findBlogTop(Integer size);
+
     int saveBlog(Blog blog);
 
     int updateBlog(Blog blog);

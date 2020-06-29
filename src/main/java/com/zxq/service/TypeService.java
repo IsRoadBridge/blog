@@ -9,6 +9,8 @@ public interface TypeService {
 
     List<Type> findAll();
 
+    List<Type>  findByTop();
+
     Type findById(Long id);
 
     Type findByName(String name);

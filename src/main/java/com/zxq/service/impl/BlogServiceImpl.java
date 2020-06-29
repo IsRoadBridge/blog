@@ -28,6 +28,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> findBlogTop(Integer size) {
+        return blogMapper.findBlogTop(size);
+    }
+
+    @Override
     public int saveBlog(Blog blog) {
         blog.setCreateTime(new Date());
         blog.setUpdateTime(new Date());
