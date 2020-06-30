@@ -23,6 +23,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> findBlogBySearch(String query) {
+        return blogMapper.findBlogBySearch(query);
+    }
+
+    @Override
     public Blog findById(Long id) {
         return blogMapper.findById(id);
     }

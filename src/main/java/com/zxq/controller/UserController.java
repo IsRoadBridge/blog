@@ -30,7 +30,6 @@ public class UserController {
         List<Blog> blogs =blogService.findBlogAll();
         List<Blog> blogsTop=blogService.findBlogTop(6);
         List<Type> types =typeService.findByTop();
-        System.out.println(types);
         for (Blog blog:blogs) {
           blog.setUser(userService.findUserById(blog.getUser().getId()));
           blog.setType(typeService.findById(blog.getType().getId()));
@@ -63,7 +62,15 @@ public class UserController {
     }
 
     @PostMapping("/search")
-    public  String search(){
+    public  String search(String query,Model model){
+        List<Blog> blogs =blogService.findBlogBySearch(query);
+        for (Blog blog:blogs) {
+            blog.setUser(userService.findUserById(blog.getUser().getId()));
+            blog.setType(typeService.findById(blog.getType().getId()));
+        }
+        model.addAttribute("blogs",blogs);
+        model.addAttribute("query",query);
+        model.addAttribute("size",blogs.size());
         return "search";
     }
 

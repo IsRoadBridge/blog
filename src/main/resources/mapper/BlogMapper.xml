@@ -30,6 +30,10 @@
         select  * from t_blog  order by update_time DESC
     </select>
 
+    <select id="findBlogBySearch" parameterType="java.lang.String" resultMap="BlogResultMapper">
+        select  * from t_blog where title like concat('%',#{query},'%') or content like concat('%',#{query},'%');
+    </select>
+
     <select id="findById"  parameterType="java.lang.Long" resultMap="BlogResultMapper">
         select  * from t_blog  where  id=#{id}
     </select>
