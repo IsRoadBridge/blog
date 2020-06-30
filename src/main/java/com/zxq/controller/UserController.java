@@ -5,10 +5,12 @@ import com.zxq.pojo.Type;
 import com.zxq.service.BlogService;
 import com.zxq.service.TypeService;
 import com.zxq.service.UserService;
+import com.zxq.util.MarkdownUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -56,8 +58,13 @@ public class UserController {
         return "archives";
     }
 
-    @GetMapping("/blog")
-    public  String blog(){
+    @GetMapping("/blog/{id}")
+    public  String blog(@PathVariable Long id, Model model){
+        Blog blog = blogService.findById(id);
+        blog.setUser(userService.findUserById(blog.getUser().getId()));
+        blog.setType(typeService.findById(blog.getType().getId()));
+        blog.setContent(MarkdownUtils.markdownToHtmlExtensions(blog.getContent()));
+        model.addAttribute("blog",blog);
         return "blog";
     }
 
