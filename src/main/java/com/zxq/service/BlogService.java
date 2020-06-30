@@ -11,6 +11,8 @@ public interface BlogService {
 
     List<Blog> findBlogBySearch(String query);
 
+    List<Blog> findBlogByTypeId(Long typeId);
+
     Blog findById(Long id);
 
     List<Blog>  findBlogTop(Integer size);

@@ -20,7 +20,7 @@
     <div class="ui inverted secondary stackable  menu">
       <h2 class="ui teal header item">Bridge'sBlog</h2>
       <a  th:href="@{/index}" class="green m-item item m-mobile-hide  " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>首页</a>
-      <a  th:href="@{/types}" class="orange m-item item m-mobile-hide " th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
+      <a  th:href="@{/types/-1}" class="orange m-item item m-mobile-hide " th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
       <a  th:href="@{/tags}" class="teal m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
       <a  th:href="@{/archives}" class="blue m-item item m-mobile-hide " th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
       <a   class=" m-item item m-mobile-hide" ><i class="mini info icon"></i>音乐盒</a>

@@ -28,6 +28,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> findBlogByTypeId(Long typeId) {
+        return blogMapper.findBlogByTypeId(typeId);
+    }
+
+    @Override
     public Blog findById(Long id) {
         return blogMapper.findById(id);
     }
