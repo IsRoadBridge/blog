@@ -34,6 +34,9 @@ public class BlogController {
     @GetMapping("/blogs")
     public String blog(Model model) {
         List<Blog> blogList = blogService.findBlogAll();
+        for (Blog blog:blogList){
+            blog.setType(typeService.findById(blog.getType().getId()));
+        }
         model.addAttribute("blogs", blogList);
         return "admin/blogs";
     }
