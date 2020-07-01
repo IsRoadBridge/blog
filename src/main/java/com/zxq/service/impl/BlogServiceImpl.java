@@ -33,6 +33,16 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<String> findYears() {
+        return blogMapper.findYears();
+    }
+
+    @Override
+    public List<Blog> findBlogByYears(String year) {
+        return blogMapper.findBlogByYears(year);
+    }
+
+    @Override
     public Blog findById(Long id) {
         return blogMapper.findById(id);
     }

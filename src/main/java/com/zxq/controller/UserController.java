@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Controller
@@ -54,7 +55,17 @@ public class UserController {
     }
 
     @GetMapping("/archives")
-    public String archives() {
+    public String archives(Model model) {
+        int blogCount =0;
+     List<String> years= blogService.findYears();
+     LinkedHashMap<String,List<Blog>> blogLinkedHashMap= new LinkedHashMap<>();
+        for (String year:years){
+            List<Blog> blogs =blogService.findBlogByYears(year);
+            blogCount=blogCount+blogs.size();
+            blogLinkedHashMap.put(year,blogs);
+        }
+        model.addAttribute("blogsMap",blogLinkedHashMap);
+        model.addAttribute("blogCount",blogCount);
         return "archives";
     }
 

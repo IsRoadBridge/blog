@@ -34,6 +34,13 @@
         select  * from t_blog where  type_id=#{typeId} order by update_time DESC
     </select>
 
+    <select id="findYears" resultType="java.lang.String">
+        select DATE_FORMAT(t_blog.update_time,'%Y年%m月') as years from t_blog  GROUP BY years ORDER BY years DESC
+    </select>
+
+    <select id="findBlogByYears" parameterType="java.lang.String" resultMap="BlogResultMapper">
+      SELECT * from t_blog WHERE DATE_FORMAT(t_blog.update_time,'%Y年%m月')=#{year} ORDER BY t_blog.update_time DESC
+    </select>
     <select id="findBlogBySearch" parameterType="java.lang.String" resultMap="BlogResultMapper">
         select  * from t_blog where title like concat('%',#{query},'%') or content like concat('%',#{query},'%');
     </select>

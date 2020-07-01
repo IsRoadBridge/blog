@@ -13,6 +13,10 @@ public interface BlogService {
 
     List<Blog> findBlogByTypeId(Long typeId);
 
+    List<String> findYears();
+
+    List<Blog> findBlogByYears(String year);
+
     Blog findById(Long id);
 
     List<Blog>  findBlogTop(Integer size);
