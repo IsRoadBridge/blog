@@ -36,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr th:each="type,iterStat:${types}">
+          <tr th:each="type,iterStat:${pageInfo.list}">
             <td th:text="${iterStat.count}"></td>
             <td th:text="${type.name}"></td>
             <td>
@@ -49,8 +49,8 @@
           <tr>
             <th colspan="6" >
               <div class="ui mini pagination menu" >
-                <a  class="  item" >上一页</a>
-                <a  class=" item" >下一页</a>
+                <a th:if="${pageInfo.hasPreviousPage}" th:href="@{/admin/types(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"  class="item" >上一页</a>
+                <a th:if="${pageInfo.hasNextPage}" th:href="@{/admin/types(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"  class=" item" >下一页</a>
               </div>
               <a  th:href="@{/admin/types/input}"  class="ui mini right floated teal basic button">新增</a>
             </th>

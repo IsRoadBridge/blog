@@ -71,7 +71,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="blog,iterStat : ${blogs}">
+          <tr th:each="blog,iterStat : ${pageInfo.list}">
             <td th:text="${iterStat.count}">1</td>
             <td th:text="${blog.title}">刻意练习清单</td>
             <td  th:text="${blog.type.name}">认知升级</td>
@@ -88,10 +88,10 @@
           <tr>
             <th colspan="7">
               <div class="ui mini pagination menu"  >
-                <a onclick="page(this)"  class="item" >上一页</a>
-                <a onclick="page(this)"  class=" item" >下一页</a>
+                <a th:if="${pageInfo.hasPreviousPage}" th:href="@{/admin/blogs(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"  class="item" >上一页</a>
+                <a th:if="${pageInfo.hasNextPage}" th:href="@{/admin/blogs(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"  class=" item" >下一页</a>
               </div>
-              <a href="#" th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>
+              <a  th:href="@{/admin/blogs/input}" class="ui mini right floated teal basic button">新增</a>
             </th>
           </tr>
           </tfoot>

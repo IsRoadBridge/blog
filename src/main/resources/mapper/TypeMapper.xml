@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="findAll" resultType="Type">
-        select  * from t_type;
+        select  * from t_type
     </select>
 
     <select id="findByTop"  resultMap="typeTopMap">

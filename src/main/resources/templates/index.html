@@ -24,13 +24,13 @@
                 <h3 class="ui teal header">博客</h3>
               </div>
               <div class="right aligned column">
-                共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${size}" > 14 </h2> 篇
+                共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${pageInfo.total}" > 14 </h2> 篇
               </div>
             </div>
           </div>
 
           <!--content-->
-          <div class="ui attached  segment" th:each="blog : ${blogs}">
+          <div class="ui attached  segment" th:each="blog : ${pageInfo.list}">
 
             <div class="ui padded vertical segment m-padded-tb-large" >
               <div class="ui middle aligned mobile reversed stackable grid" >
@@ -73,10 +73,10 @@
           <div class="ui bottom attached segment" >
             <div class="ui middle aligned two column grid">
               <div class="column">
-                <a href="#"    class="ui mini teal basic button">上一页</a>
-              </div>
+                <a th:if="${pageInfo.hasPreviousPage}" th:href="@{/index(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"  class="item" >上一页</a>
+\              </div>
               <div class="right aligned column">
-                <a href="#"    class="ui mini teal basic button">下一页</a>
+                <a th:if="${pageInfo.hasNextPage}" th:href="@{/index(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"  class=" item" >下一页</a>
               </div>
             </div>
           </div>

@@ -1,5 +1,7 @@
 package com.zxq.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zxq.pojo.Blog;
 import com.zxq.pojo.Type;
 import com.zxq.service.BlogService;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,18 +32,20 @@ public class UserController {
     private TypeService typeService;
 
     @GetMapping("/index")
-    public String index(Model model) {
+    public String index(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum,
+                        Model model) {
+        PageHelper.startPage(pageNum,5);
         List<Blog> blogs = blogService.findBlogAll();
+        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogs);
         List<Blog> blogsTop = blogService.findBlogTop(6);
         List<Type> types = typeService.findByTop();
         for (Blog blog : blogs) {
             blog.setUser(userService.findUserById(blog.getUser().getId()));
             blog.setType(typeService.findById(blog.getType().getId()));
         }
-        model.addAttribute("blogs", blogs);
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("blogsTop", blogsTop);
         model.addAttribute("types", types);
-        model.addAttribute("size", blogs.size());
         return "index";
     }
 
@@ -56,16 +61,16 @@ public class UserController {
 
     @GetMapping("/archives")
     public String archives(Model model) {
-        int blogCount =0;
-     List<String> years= blogService.findYears();
-     LinkedHashMap<String,List<Blog>> blogLinkedHashMap= new LinkedHashMap<>();
-        for (String year:years){
-            List<Blog> blogs =blogService.findBlogByYears(year);
-            blogCount=blogCount+blogs.size();
-            blogLinkedHashMap.put(year,blogs);
+        int blogCount = 0;
+        List<String> years = blogService.findYears();
+        LinkedHashMap<String, List<Blog>> blogLinkedHashMap = new LinkedHashMap<>();
+        for (String year : years) {
+            List<Blog> blogs = blogService.findBlogByYears(year);
+            blogCount = blogCount + blogs.size();
+            blogLinkedHashMap.put(year, blogs);
         }
-        model.addAttribute("blogsMap",blogLinkedHashMap);
-        model.addAttribute("blogCount",blogCount);
+        model.addAttribute("blogsMap", blogLinkedHashMap);
+        model.addAttribute("blogCount", blogCount);
         return "archives";
     }
 
@@ -98,18 +103,22 @@ public class UserController {
     }
 
     @GetMapping("/types/{id}")
-    public String types(@PathVariable Long id, Model model) {
+    public String types(@PathVariable Long id,
+                        @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum,
+                        Model model) {
         List<Type> types = typeService.findByTop();
         if (id == -1) {
             id = types.get(0).getId();
         }
+        PageHelper.startPage(pageNum,5);
         List<Blog> blogs = blogService.findBlogByTypeId(id);
         for (Blog blog : blogs) {
             blog.setUser(userService.findUserById(blog.getUser().getId()));
             blog.setType(typeService.findById(blog.getType().getId()));
         }
+        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogs);
         model.addAttribute("types", types);
-        model.addAttribute("blogs", blogs);
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("activeTypeId", id);
         return "types";
     }
