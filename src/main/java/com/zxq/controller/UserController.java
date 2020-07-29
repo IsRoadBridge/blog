@@ -110,7 +110,7 @@ public class UserController {
         if (id == -1) {
             id = types.get(0).getId();
         }
-        PageHelper.startPage(pageNum,5);
+        PageHelper.startPage(pageNum,100);
         List<Blog> blogs = blogService.findBlogByTypeId(id);
         for (Blog blog : blogs) {
             blog.setUser(userService.findUserById(blog.getUser().getId()));
