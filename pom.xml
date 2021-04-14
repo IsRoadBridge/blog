@@ -87,7 +87,6 @@
         </dependency>
         <!--将test分支合并到master分支-->
         <!--AAAA-->
-        <!--BBBB-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
