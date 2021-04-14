@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:replace="${title}">博客详情</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+  <link rel="stylesheet"  th:href="@{/semantic/css/typo.css}">
+  <link rel="stylesheet"  th:href="@{/semantic/css/animate.css}">
+  <link rel="stylesheet"  th:href="@{/semantic/lib/prism/prism.css}">
+  <link rel="stylesheet"  th:href="@{/semantic/lib/tocbot/tocbot.css}">
+  <link rel="stylesheet"  th:href="@{/semantic/css/me.css}">
+</head>
+<body>
+
+
+<!--导航-->
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+  <div class="ui container">
+    <div class="ui inverted secondary stackable  menu">
+      <h2 class="ui teal header item">Bridge'sBlog</h2>
+      <a  th:href="@{/index}" class="green m-item item m-mobile-hide  " th:classappend="${n==1} ? 'active'"><i class="mini home icon"></i>首页</a>
+      <a  th:href="@{/types/-1}" class="orange m-item item m-mobile-hide " th:classappend="${n==2} ? 'active'"><i class="mini idea icon"></i>分类</a>
+      <a  th:href="@{/tags}" class="teal m-item item m-mobile-hide" th:classappend="${n==3} ? 'active'"><i class="mini tags icon"></i>标签</a>
+      <a  th:href="@{/archives}" class="blue m-item item m-mobile-hide " th:classappend="${n==4} ? 'active'"><i class="mini clone icon"></i>归档</a>
+      <a   class=" m-item item m-mobile-hide" ><i class="mini info icon"></i>音乐盒</a>
+      <a   class="m-item item m-mobile-hide" ><i class="mini info icon"></i>公告</a>
+      <a  class="m-item item m-mobile-hide" ><i class="mini info icon"></i>随笔</a>
+      <a  th:href="@{/about}" class="purple m-item item m-mobile-hide " th:classappend="${n==5} ? 'active'"><i class="mini info icon"></i>关于我</a>
+      <div class="right m-item item m-mobile-hide">
+        <form name="search"  th:action="@{/search}" method="post" >
+          <div class="ui icon inverted transparent input m-margin-tb-tiny">
+            <input type="text" name="query" placeholder="Search...." th:value="${query}">
+            <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<!--底部footer-->
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb">
+  <div class="ui center aligned container">
+    <div class="ui inverted divided stackable grid">
+      <div class="three wide column">
+        <div class="ui inverted link list">
+          <div class="item">
+            <img  th:src="@{/semantic/images/wechat.jpg}"  class="ui rounded image" alt="" style="width: 110px">
+          </div>
+        </div>
+      </div>
+      <div class="three wide column" >
+        <h4 class="ui inverted header m-text-thin m-text-spaced " >最新博客</h4>
+        <div id="newblog-container">
+          <div class="ui inverted link list" th:fragment="newblogList">
+            <a href="#"  target="_blank" class="item m-text-thin" >用户故事（User Story）</a>
+            <!--/*-->
+            <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+            <a href="#" class="item m-text-thin">用户故事（User Story）</a>
+            <!--*/-->
+          </div>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header m-text-thin m-text-spaced item ">联系我</h4>
+        <div class="ui inverted link list">
+          <p class="item m-white-opacity-tiny" >Email：1406704948@qq.com</p>
+          <p class="item m-white-opacity-tiny" >QQ：1406704948</p>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header m-text-thin m-text-spaced item ">Blog</h4>
+        <p style="color: #7B7B7B !important;font-family: '楷体';font-size: larger" >这是我设计的个人博客、主要用来写编程相关的学习笔记，记录生活随笔，见证自己的成长。不忘初心，方得始终</p>
+      </div>
+    </div>
+    <div class="ui   divider"></div>
+    <p style="color: #7B7B7B !important;" ><b>Copyright © 2020 - <span th:text="${#dates.year(#dates.createNow())}"></span> Bridge Designed by Xiaoqiao</b></p>
+  </div>
+
+</footer>
+
+<th:block th:fragment="script">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+  <script  th:src="@{/semantic/lib/prism/prism.js}"></script>
+  <script  th:src="@{/semantic/lib/tocbot/tocbot.min.js}"></script>
+  <script  th:src="@{/semantic/lib/qrcode/qrcode.min.js}"></script>
+  <script  th:src="@{/semantic/lib/waypoints/jquery.waypoints.min.js}"></script>
+  <script>
+    $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+  </script>
+</th:block>
+
+</body>
+</html>

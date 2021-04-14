@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxq.dao.TypeMapper">
+
+    <resultMap id="typeTopMap" type="com.zxq.pojo.Type">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="blogs" javaType="List" ofType="com.zxq.pojo.Blog">
+            <id column="bid" property="id"></id>
+            <result column="title" property="title"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultType="Type">
+        select  * from t_type
+    </select>
+
+    <select id="findByTop"  resultMap="typeTopMap">
+        SELECT  b.id bid,t.id id,name,title from t_type t,t_blog b WHERE t.id=b.type_id
+    </select>
+
+    <select id="findById" resultType="Type">
+        select  * from t_type where id=#{id};
+    </select>
+
+    <select id="findByName" resultType="Type">
+        select  * from t_type where name=#{name};
+    </select>
+
+    <insert id="save" parameterType="java.lang.String">
+        insert into t_type(name) values(#{name});
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        delete  from t_type  where  id=#{id};
+    </delete>
+
+    <update id="update" parameterType="Type">
+        update t_type set name =#{name} where  id=#{id};
+    </update>
+</mapper>

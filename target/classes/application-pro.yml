@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: warn
+    com.zxq: info
+  file: log/blog-pro.log
+server:
+  port: 8081
